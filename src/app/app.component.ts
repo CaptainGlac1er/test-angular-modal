@@ -3,6 +3,7 @@ import {ModalService} from './modal.service';
 import {OkComponent} from './ok/ok.component';
 import {ModalDirective} from './modal.directive';
 import {TextModalComponent} from './text-modal/text-modal.component';
+import {RecursiveTextModalComponent} from './recursive-text-modal/recursive-text-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -26,5 +27,9 @@ export class AppComponent implements OnInit {
 
   async openTextModal() {
     alert(await this.modalService.openModal<string>(TextModalComponent));
+  }
+
+  async openRecursiveTextModal() {
+    alert(await this.modalService.openModal<string>(RecursiveTextModalComponent));
   }
 }

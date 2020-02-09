@@ -8,7 +8,8 @@ import {Component, Input, OnInit} from '@angular/core';
 export class BasicModalComponent<T> implements OnInit {
   @Input() returnCall: (data: T) => void;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

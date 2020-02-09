@@ -1,4 +1,4 @@
-import {ComponentFactoryResolver, Injectable, Type, ViewContainerRef} from '@angular/core';
+import {ComponentFactoryResolver, Injectable, Type, ViewContainerRef, ViewRef} from '@angular/core';
 import {BasicModalComponent} from './basic-modal/basic-modal.component';
 
 @Injectable({
@@ -6,9 +6,12 @@ import {BasicModalComponent} from './basic-modal/basic-modal.component';
 })
 export class ModalService {
   modalElement: ViewContainerRef;
+  modalStack: ViewRef[];
 
   constructor(
-    private componentFactoryResolver: ComponentFactoryResolver) { }
+    private componentFactoryResolver: ComponentFactoryResolver) {
+    this.modalStack = [];
+  }
 
   setElementRef(modalElement: ViewContainerRef) {
     this.modalElement = modalElement;
@@ -16,10 +19,16 @@ export class ModalService {
 
   openModal<T>(modal: Type<BasicModalComponent<T>>): Promise<T> {
     return new Promise(((resolve) => {
-      this.modalElement.clear();
-      const component = this.modalElement.createComponent(this.componentFactoryResolver.resolveComponentFactory(modal));
+      if (this.modalElement.length > 0) {
+        this.modalStack.push(this.modalElement.detach(0));
+      }
+      const component =
+        this.modalElement.createComponent<BasicModalComponent<T>>(this.componentFactoryResolver.resolveComponentFactory(modal), 0);
       component.instance.returnCall = (returnData: T) => {
-        this.modalElement.clear();
+        this.modalElement.remove();
+        if (this.modalStack.length > 0) {
+          this.modalElement.insert(this.modalStack.pop());
+        }
         resolve(returnData);
       };
     }));

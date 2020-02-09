@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BasicModalComponent} from '../basic-modal/basic-modal.component';
 
 @Component({
@@ -7,7 +7,7 @@ import {BasicModalComponent} from '../basic-modal/basic-modal.component';
   styleUrls: ['./text-modal.component.scss']
 })
 export class TextModalComponent extends BasicModalComponent<string> implements OnInit {
-  data: string;
+  data = '';
 
   ngOnInit(): void {
   }
