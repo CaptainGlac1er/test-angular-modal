@@ -20,10 +20,10 @@ export class ModalService {
   openModal<T>(modal: Type<BasicModalComponent<T>>): Promise<T> {
     return new Promise(((resolve) => {
       if (this.modalElement.length > 0) {
-        this.modalStack.push(this.modalElement.detach(0));
+        this.modalStack.push(this.modalElement.detach());
       }
       const component =
-        this.modalElement.createComponent<BasicModalComponent<T>>(this.componentFactoryResolver.resolveComponentFactory(modal), 0);
+        this.modalElement.createComponent<BasicModalComponent<T>>(this.componentFactoryResolver.resolveComponentFactory(modal));
       component.instance.returnCall = (returnData: T) => {
         this.modalElement.remove();
         if (this.modalStack.length > 0) {
