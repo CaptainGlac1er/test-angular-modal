@@ -9,6 +9,7 @@ import {ModalDirective} from './modal.directive';
 import {TextModalComponent} from './text-modal/text-modal.component';
 import {FormsModule} from '@angular/forms';
 import {RecursiveTextModalComponent} from './recursive-text-modal/recursive-text-modal.component';
+import { ModalOverlayComponent } from './modal-overlay/modal-overlay.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {RecursiveTextModalComponent} from './recursive-text-modal/recursive-text
     BasicModalComponent,
     ModalDirective,
     TextModalComponent,
-    RecursiveTextModalComponent
+    RecursiveTextModalComponent,
+    ModalOverlayComponent
   ],
   imports: [
     BrowserModule,

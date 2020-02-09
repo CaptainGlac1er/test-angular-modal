@@ -18,4 +18,8 @@ export class OkComponent extends BasicModalComponent<boolean> implements OnInit 
   close(result: boolean) {
     this.returnCall(result);
   }
+
+  clickAway() {
+    alert('user tried to click away');
+  }
 }

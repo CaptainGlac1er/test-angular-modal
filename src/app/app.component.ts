@@ -30,6 +30,10 @@ export class AppComponent implements OnInit {
   }
 
   async openRecursiveTextModal() {
-    alert(await this.modalService.openModal<string>(RecursiveTextModalComponent));
+    try {
+      alert(await this.modalService.openModal<string>(RecursiveTextModalComponent));
+    } catch (error) {
+      alert('modal cancelled');
+    }
   }
 }

@@ -23,6 +23,12 @@ export class RecursiveTextModalComponent extends BasicModalComponent<string> imp
   }
 
   async moreData() {
-    this.data += await this.modalService.openModal(RecursiveTextModalComponent);
+    try {
+      this.data += await this.modalService.openModal(RecursiveTextModalComponent);
+    } catch (error) { }
+  }
+
+  clickAway() {
+    this.cancelCall();
   }
 }

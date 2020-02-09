@@ -1,5 +1,7 @@
-<div>
-  <p>Do you like Angular?</p>
-  <button (click)="close(true)">yes</button>
-  <button (click)="close(false)">no</button>
-</div>
+<app-modal-overlay (clickAway)="clickAway()">
+  <div>
+    <p>Do you like Angular?</p>
+    <button (click)="close(true)">Yes</button>
+    <button (click)="close(false)">No</button>
+  </div>
+</app-modal-overlay>
