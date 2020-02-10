@@ -1,0 +1,5 @@
+<div class="modalOverlayContainer" (click)="clickModalBackdrop($event)">
+  <div class="modalOverlay" [class.big]="big" (click)="clickModal($event)">
+    <ng-content></ng-content>
+  </div>
+</div>
