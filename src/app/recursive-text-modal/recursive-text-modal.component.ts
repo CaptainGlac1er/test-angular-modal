@@ -9,6 +9,7 @@ import {ModalService} from '../modal.service';
 })
 export class RecursiveTextModalComponent extends BasicModalComponent<string> implements OnInit {
   data = '';
+  big = Math.random() >= .5;
 
   constructor(
     private modalService: ModalService) {
