@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
   }
 
   async openModal() {
-    alert(await this.modalService.openModal<boolean>(OkComponent));
+    alert(await this.modalService.openModal(OkComponent));
   }
 
   async openTextModal() {
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
 
   async openRecursiveTextModal() {
     try {
-      alert(await this.modalService.openModal<string>(RecursiveTextModalComponent));
+      alert((await this.modalService.openModal<string>(RecursiveTextModalComponent)));
     } catch (error) {
       alert('modal cancelled');
     }

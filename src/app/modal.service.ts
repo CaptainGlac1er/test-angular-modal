@@ -19,7 +19,7 @@ export class ModalService {
 
   addNewModal<T>(modal: Type<BasicModalComponent<T>>) {
     if (this.modalElement.length > 0) {
-      this.modalStack.push(this.modalElement.detach());
+      //this.modalStack.push(this.modalElement.detach());
     }
     return this.modalElement.createComponent<BasicModalComponent<T>>(this.componentFactoryResolver.resolveComponentFactory(modal));
   }
@@ -27,7 +27,7 @@ export class ModalService {
   goToPreviousModal() {
     this.modalElement.remove();
     if (this.modalStack.length > 0) {
-      this.modalElement.insert(this.modalStack.pop());
+      //this.modalElement.insert(this.modalStack.pop());
     }
   }
 

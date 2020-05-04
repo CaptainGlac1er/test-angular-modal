@@ -1,5 +1,5 @@
-<div class="testModalContainer" (click)="clickAway.emit()">
-  <div class="testModalOverlay" [ngClass]="{big: big}" (click)="$event.stopPropagation()">
+<div class="modalOverlayContainer" (click)="clickModalBackdrop($event)">
+  <div class="modalOverlay" [ngClass]="{big: big}" (click)="clickModal($event)">
     <ng-content></ng-content>
   </div>
 </div>

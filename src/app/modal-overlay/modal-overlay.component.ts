@@ -1,5 +1,4 @@
-import {Component, ContentChild, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {BasicModalComponent} from '../basic-modal/basic-modal.component';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-modal-overlay',
@@ -7,13 +6,19 @@ import {BasicModalComponent} from '../basic-modal/basic-modal.component';
   styleUrls: ['./modal-overlay.component.scss']
 })
 export class ModalOverlayComponent<T> implements OnInit {
-  @ContentChild(BasicModalComponent) modal: BasicModalComponent<T>;
-
-  @Input() big = true;
+  @Input() big = false;
   @Output() clickAway = new EventEmitter();
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
 
+  clickModal($event: MouseEvent) {
+    $event.stopPropagation();
+  }
+
+  clickModalBackdrop($event: MouseEvent) {
+    this.clickAway.emit();
+  }
 }
